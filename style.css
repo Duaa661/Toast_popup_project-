@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    text-align: center;
+    font-family: 'Nunito',sans-serif;
+    margin: 16px;
+    background-color: black;
+}
+#Container{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-inline:auto ;
+    gap: 16px;
+}
+Select,input,button{
+    font: inherit;
+    padding: 8px;
+}
+.duration-cont{
+    display: flex;
+    align-items: center;
+}
+#duration{
+    flex-grow: 1;
+}
+button:hover{
+    background-color: green;
+    cursor: pointer;
+}
+.toast{
+    background-color: pink;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25);
+}
+
+.toasts-container{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.toasts-container.right{
+    left: auto;
+    right: 1rem;
+}
+.toasts-container.bottom{
+    top: auto;
+    bottom: 1rem;
+}
+.div{
+    background-color: blue;
+    width: 500px;
+    text-align: center;
+    margin-left: 270px;
+    height: 400px;
+    margin-top: 60px;
+}
+.div h1{
+    color: red;
+    padding-top: 10px;
+}
+#duration{
+    color: green;
+}
