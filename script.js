@@ -1,24 +1,51 @@
-const showtoastbutton=document.querySelector('.button');
-const horzintal_postion=document.querySelector('#Select');
-const vertical_postion=document.querySelector('#Select-1');
-const toasts_container=document.querySelector('.toasts-container');
-const toast_type=document.querySelector('Select-2');
- 
-showtoastbutton.addEventListener('click',()=>{
-    const newtoast=document.createElement('div');
-    newtoast.classList.add('Toast');
-    if(horzintal_postion.value==='right'){
-        toasts_container.classList.add('right');
+const showToastBtn = document.querySelector('.show-toast')
+const horizontalPosition = document.querySelector('#horizontal-position')
+const verticalPosition = document.querySelector('#vertical-position')
+const toastType = document.querySelector('#toast-type')
+const toastMessage = document.querySelector('#toast-message')
+const toastsContainer = document.querySelector('.toasts-container')
+const durationInput = document.querySelector('#duration')
+
+showToastBtn.addEventListener('click', () => {
+  if (horizontalPosition.value === 'right') {
+    toastsContainer.classList.add('right')
+  } else {
+    toastsContainer.classList.remove('right')
+  }
+  if (verticalPosition.value === 'bottom') {
+    toastsContainer.classList.add('bottom')
+  } else {
+    toastsContainer.classList.remove('bottom')
+  }
+
+  const newToast = document.createElement('div')
+  newToast.classList.add('toast')
+  newToast.classList.add(toastType.value)
+
+  newToast.innerText = ` ${toastMessage.value}`
+
+  const closeIcon = document.createElement('span')
+  closeIcon.innerText = ' ✕'
+  newToast.append(closeIcon)
+
+  function removeToast() {
+    if (toastsContainer.classList.contains('right')) {
+      newToast.classList.add('go-right')
+    } else {
+      newToast.classList.add('go-left')
     }
-    else{
-        toasts_container.classList.remove('right');
-    }
-    if(vertical_postion.value==='bottom'){
-        toasts_container.classList.add('bottom');
-    }
-    else{
-        toasts_container.classList.remove('bottom');
-    }
-  console.log(vertical_postion.value);
-  console.log(horzintal_postion.value);
+    setTimeout(() => {
+      newToast.remove()
+    }, 100)
+  }
+
+  closeIcon.addEventListener('click', () => {
+    removeToast()
+  })
+
+  setTimeout(() => {
+    removeToast()
+  }, parseInt(durationInput.value) * 1000)
+
+  toastsContainer.append(newToast)
 })
